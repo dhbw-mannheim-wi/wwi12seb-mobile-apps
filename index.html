@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WWI12SEB Mobile Applications</title>
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+	
+	<script lang="javascript">
+		var groups = [
+			{
+				name : "Aventura",
+				code : "https://github.com/drachenbach/aventura.git",
+				docs : "https://github.com/drachenbach/aventura",
+				pres : "http://htmlpreview.github.io/?https://github.com/drachenbach/aventura/blob/master/presentation/index.html#/?"
+			},
+			{
+				name : "huggr",
+				code : "https://github.com/a3rosol/huggr.git",
+				docs : "https://github.com/a3rosol/huggr/wiki/Documentation",
+				pres : "http://a3rosol.github.io/#/"
+			},
+			{
+				name : "personalChef",
+				code : "https://github.com/Jakob-Ruf/personalChef.git",
+				docs : "https://github.com/Jakob-Ruf/personalChef",
+				pres : "http://htmlpreview.github.io/?https://github.com/Jakob-Ruf/personalChef/blob/master/slides-presentation-personalchef.html#/"
+			},
+			{
+				name : "'RUM' - Reisen und Mehr",
+				code : [ "https://github.com/ofrendo/Mobile-fe.git", "https://github.com/ofrendo/Mobile.git"],
+				docs : [ "https://github.com/ofrendo/Mobile-fe", "https://github.com/ofrendo/Mobile" ],
+				pres : "http://htmlpreview.github.io/?https://raw.githubusercontent.com/ofrendo/Mobile-fe/master/RUM%20Pr%C3%A4sentation.html#/"
+			},
+			{
+				name : "Who-U",
+				code : "https://github.com/chrizzTs/Who-U.git",
+				docs : "https://github.com/chrizzTs/Who-U",
+				pres : "http://htmlpreview.github.io/?https://raw.githubusercontent.com/chrizzTs/Who-U/master/Presentation/slides-whou.html#/"
+			}
+			
+		];
+		
+		function addCellWithContent(row, singleOrArray, asLink) {
+			var content = singleOrArray;
+			
+			if( !Array.isArray(singleOrArray) ) {
+				content = [ singleOrArray ];	
+			} 
+				
+			var cell = row.insertCell(-1);
+			
+			for(var i = 0; i < content.length; i++) {
+				if( i > 0)
+					cell.innerHTML = cell.innerHTML + "<br/>";
+
+				if(asLink)
+					cell.innerHTML = cell.innerHTML + "<a href='"+content[i]+"'>"+content[i]+"</a>"; 
+				else
+					cell.innerHTML = cell.innerHTML + content[i]; 
+				
+			}
+				
+		};
+		
+		function displayGroups() {
+			var table = document.getElementById('mainTable').getElementsByTagName('tbody')[0];
+			
+			for(var i = 0; i < groups.length; i++) {
+				var row = table.insertRow(-1);
+				
+				addCellWithContent(row, groups[i].name, false);
+				addCellWithContent(row, groups[i].code, true);
+				addCellWithContent(row, groups[i].docs, true);
+				addCellWithContent(row, groups[i].pres, true);
+			}
+			
+		};
+				
+	</script>
+	
+</head>
+
+<body onload="displayGroups();">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WWI12SEB Mobile Applications</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 50px;">
+
+        <div class="starter-template">
+
+            <h3>Mobile Applications</h3>
+
+            <table class="table table-bordered table-striped" id="mainTable">
+                <thead>
+                    <tr>
+                        <th>Gruppe</th>
+                        <th>Code</th>
+                        <th>Dokumentation</th>
+                        <th>Präsentation</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+
+
+           
+		</div>
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>
+
+
